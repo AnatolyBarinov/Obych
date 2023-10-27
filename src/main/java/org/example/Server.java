@@ -16,13 +16,14 @@ public class Server {
 
     private final ExecutorService threadPool;
 
+
     public Server() {
         threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
     }
 
     public void start(int port) {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Server running on port " + port);
+            System.out.println("Сервер запущен на порте " + port);
             while (true) {
                 Socket socket = serverSocket.accept();
                 threadPool.execute(() -> handleConnection(socket));
